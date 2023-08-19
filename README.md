@@ -35,7 +35,7 @@ To see if Marvin would work after overcoming this small obstacle, I edited some 
 - Create a new Python venv or Conda environment.
 - Run `pip install -r requirements.txt`
 - Download a GGML model into the `models` subdirectory. 
-  - You can find plenty of them on [TheBloke's HuggingFace page](https://huggingface.co/TheBloke). 30B or larger models work best, but many 13B models and are much faster if you're running on CPU or a GPU without a ton of VRAM, and even some 7B models seem to give decent results with Marvin. I've seen good results with `wizardlm-33b-v1.0-uncensored`, but I recommend trying several.
+  - You can find plenty of them on [TheBloke's HuggingFace page](https://huggingface.co/TheBloke). 30B or larger models work best, but many 13B models and are much faster if you're running on CPU (or a GPU without a ton of VRAM), and even some 7B models seem to give decent results with Marvin. I've seen good results with `wizardlm-33b-v1.0-uncensored`, but I recommend trying several.
 - Look at `models/gpt-4.yaml`. It's called `gpt-4` because that's the OpenAI model Marvin uses by default. So, LocalAI will take requests for `gpt-4` and route them to the LLaMA model you specify in `gpt-4.yaml`.
 - Update the `model` attribute in `gpt-4.yaml` to match the filename of the GGML model you downloaded.
   - Note that you can also adjust model parameters in the same section of the YAML. Experiment a bit and see what works for you. Optimal settings will vary between LLaMA-based models. Read the [LocalAI advanced configuration docs](https://localai.io/advanced/) to learn more about all the options you can configure here.
