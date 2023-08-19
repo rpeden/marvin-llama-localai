@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  api:
+    # CPU-only
+    image: quay.io/go-skynet/local-ai:v1.24.1
+    # CUDA 11
+    # image: quay.io/go-skynet/local-ai:v1.24.1-cublas-cuda11
+    # CUDA 12
+    # image: quay.io/go-skynet/local-ai:v1.24.1-cublas-cuda12
+    ports:
+      - 8080:8080
+    expose:
+      - 8080:8080
+    env_file:
+      - .env
+    environment:
+      - DEBUG=true
+      - REBUILD=true
+      - MODELS_PATH=/models
+    volumes:
+      - ./models:/models:cached
+      - ./grammar:/build/pkg/grammar
+    command: ["/usr/bin/local-ai"]
+    # Uncomment the entire section below to enable GPU support
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]

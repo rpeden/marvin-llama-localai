@@ -1,0 +1,37 @@
+name: gpt-4
+# Default model parameters
+parameters:
+  # Relative to the models path
+  model: wizardlm-33b-v1.0-uncensored.ggmlv3.q3_K_S.bin
+  # temperature
+  temperature: 0.6
+  #top_p: 80
+  top_k: 0.95
+  # all the OpenAI request options here..
+
+# Default context size
+context_size: 2048
+threads: 10
+backend: llama
+# Increase or decrease as necessary depending on model size and GPU capability
+gpu_layers: 25
+
+# Enable prompt caching
+#prompt_cache_path: "llama-cache"
+prompt_cache_all: false
+
+# stopwords (if supported by the backend)
+stopwords:
+- "User:"
+- "Assistant:"
+
+
+roles:
+  user: "User:"
+  system: "System:"
+  assistant: "Assistant:"
+template:
+  # template file ".tmpl" with the prompt template to use by default on the endpoint call. Note there is no extension in the files
+  completion: completion
+  chat: chat
+  function: function
